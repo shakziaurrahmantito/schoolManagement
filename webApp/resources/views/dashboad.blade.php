@@ -269,7 +269,15 @@
       <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
       <script type="text/javascript">
 
+            
+
+            var data = [];
             var datas = <?php echo json_encode($chartData); ?>;
+            $.each(datas, function(key, val){
+                  data.push(val);
+            });
+            data.shift();
+            var datas = data;
 
             Highcharts.chart('chart-container',{
                   title : {
