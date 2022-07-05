@@ -40,6 +40,19 @@
                     <li><a href="{{url('/teacherlist')}}">Teacher List</a></li>
                   </ul>
               </li>
+
+              <li class="p-1"><a href="#select-3" class="" data-toggle="collapse"><i class="fa fa-bandcamp"></i>Log info</a>
+                  <ul class="collapse <?php 
+
+                    if(Request::path() == "loglist"){
+                      echo "show";
+                    }
+
+                ?> list-unstyled ml-4" id="select-3" data-parent="#accordian">
+                    <li><a href="{{url('/loglist')}}">Login List</a></li>
+                  </ul>
+              </li>
+
               @endif
 
 

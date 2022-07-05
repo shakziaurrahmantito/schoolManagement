@@ -7,6 +7,7 @@ use App\Http\Controllers\roleController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\attendaceController;
 use App\Http\Controllers\schoolController;
+use App\Http\Controllers\loginController;
 use App\Http\Controllers\test;
 use App\Models\teacher;
 
@@ -37,6 +38,27 @@ Route::get("/pdfview", function(){
 
 	$tea = teacher::find(10);
 	return view("pdf.teacherpdf", compact('tea'));
+
+
+});
+
+
+
+Route::get("/test", function(){
+
+	//return $_SERVER['HTTP_USER_AGENT'];
+	//return $_SERVER['REMOTE_ADDR'];
+
+	//return Request::getIp();
+
+			//$device=   $request->header('User-Agent');
+            //dd($device);
+
+	//return BrowserDetect::browserFamily();
+
+
+
+
 
 
 });
@@ -89,6 +111,9 @@ Route::group(['middleware' => ['loginCheck']], function(){
 
 	Route::get("/school",[schoolController::class,"school"]);
 	Route::post("/schoolUpdate",[schoolController::class,"schoolUpdate"])->name("schoolUpdate");
+
+
+	Route::get("/loglist",[loginController::class,"loglist"]);
 
 
 
