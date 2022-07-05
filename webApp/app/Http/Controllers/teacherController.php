@@ -87,7 +87,7 @@ class teacherController extends Controller
     }
 
     public function teacherLogin(Request $req){
-
+        date_default_timezone_set("Asia/Dhaka");
         $count = teacher::where("tea_email",$req->tea_email)
                 ->where("tea_password",md5($req->tea_password))
                 ->limit(1)
@@ -99,14 +99,12 @@ class teacherController extends Controller
             $req->session()->put("login",1);
             $req->session()->put("tea_id", $result->tea_id);
             $req->session()->put("tea_cla", $result->tea_cla);
-
             $broserName = BrowserDetect::browserFamily();
             $ip = $_SERVER['REMOTE_ADDR'];
-
             $log = new loginInfo();
             $log->name = $result->tea_name;
             $log->email = $result->tea_email;
-            $log->user_ip = $ip;
+            $log->user_ip = $ipaddress;
             $log->browser = $broserName;
             $log->save();
             return "1";

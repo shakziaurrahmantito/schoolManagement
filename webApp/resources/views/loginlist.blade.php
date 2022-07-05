@@ -34,6 +34,11 @@
                 <td>{{$data->email}}</td>
                 <td>{{$data->browser}}</td>
                 <td>{{$data->user_ip}}</td>
+                <?php 
+
+                    date_default_timezone_set("Asia/Dhaka");
+
+                ?>
                 <td>{{date("h:i:s a d-m-Y", strtotime($data->created_at))}}</td>
               </tr>
               @endforeach
