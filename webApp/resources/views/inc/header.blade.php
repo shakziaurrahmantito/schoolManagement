@@ -96,7 +96,7 @@
             </a></li>
 
           </ul>
-
+          <p class="text-white">Welcome</p>
         </div>
-        <p>Welcome</p>
+        
     </nav>
