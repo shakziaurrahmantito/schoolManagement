@@ -29,7 +29,14 @@
     <section class="my-5 p-3 py-5" style="max-width: 450px;margin: auto;">
       <div class="card">
         <div class="card-body">
+
           <form class="py-5" method="post" id="login">
+            
+            <marquee scrollamount="8">
+              <div>Welcome to our school management system... If you have any questions contact us 0177134-3570, 01798659666. Develop by <a target="_blank" href="https://shakziaurrahmantito.tk">Md. Ziaur Rahman</a></div>
+            </marquee>
+
+            <hr>
             @csrf
             <h6 class="text-center text-danger" id="msg"></h6>
             <div class="form-group">
@@ -43,6 +50,8 @@
               <small id="errpassword" class="form-text" style="color:red;"></small>
             </div>
             <input type="submit" value="Login" class="btn btn-primary">
+            <hr>
+            <div class="text-center">&copy; All Right Reversed Shak Ziaur Rahman Tito</a></div>
 
           </form>
 
