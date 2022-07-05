@@ -20,6 +20,7 @@
                 <th>Email</th>
                 <th>Browser</th>
                 <th>Ip</th>
+                <th>Time & Date</th>
               </tr>
             </thead>
             <tbody>
@@ -33,6 +34,7 @@
                 <td>{{$data->email}}</td>
                 <td>{{$data->browser}}</td>
                 <td>{{$data->user_ip}}</td>
+                <td>{{date("h:i:s a d-m-Y", strtotime($data->created_at))}}</td>
               </tr>
               @endforeach
             </tbody>
@@ -52,7 +54,7 @@
   </section>
 
   <script type="text/javascript">
-    
+
     $(".print").click(function(){
       $("table").printThis({
         base : "{{url()->full()}}",
