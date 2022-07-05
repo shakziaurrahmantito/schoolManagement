@@ -104,7 +104,7 @@ class teacherController extends Controller
             $log = new loginInfo();
             $log->name = $result->tea_name;
             $log->email = $result->tea_email;
-            $log->user_ip = $ipaddress;
+            $log->user_ip = $ip;
             $log->browser = $broserName;
             $log->save();
             return "1";
