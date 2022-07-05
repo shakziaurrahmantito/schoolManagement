@@ -9,10 +9,12 @@ use App\Models\classes;
 use App\Models\school;
 use App\Models\student;
 use App\Models\attendance;
+use App\Models\loginInfo;
 use Illuminate\Support\Facades\Session;
 use App\Mail\teacherAccountMail;
 use Illuminate\Support\Facades\Mail;
 use PDF;
+use BrowserDetect;
 
 class teacherController extends Controller
 {
@@ -97,11 +99,20 @@ class teacherController extends Controller
             $req->session()->put("login",1);
             $req->session()->put("tea_id", $result->tea_id);
             $req->session()->put("tea_cla", $result->tea_cla);
+
+            $broserName = BrowserDetect::browserFamily();
+            $ip = $_SERVER['REMOTE_ADDR'];
+
+            $log = new loginInfo();
+            $log->name = $result->tea_name;
+            $log->email = $result->tea_email;
+            $log->user_ip = $ip;
+            $log->browser = $broserName;
+            $log->save();
             return "1";
         }else{
             return "0";
         }
-
 
     }
 
