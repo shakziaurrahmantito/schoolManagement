@@ -19,7 +19,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Browser</th>
-                <th>Ip</th>
+                <th>IP</th>
                 <th>Time & Date</th>
               </tr>
             </thead>
