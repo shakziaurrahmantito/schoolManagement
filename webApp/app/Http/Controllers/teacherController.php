@@ -165,21 +165,18 @@ class teacherController extends Controller
        $data = [
             "name" => $req->tea_name,
             "email" => $req->tea_email,
-            "password" => $req->tea_password
+            "password" => $req->tea_password,
+            "sitelink" => url('/')
        ];
 
 
        $senderInfo = [
             "from" => "contact@shakziaurrahmantito.tk",
-            "alias" => "New account",
-            "subject" => "New account login infomation"
+            "alias" => "School Management System",
+            "subject" => "Login Information"
        ];
 
-       //$siteLink = url('');
-
        Mail::to($req->tea_email)->send(new teacherAccountMail($data, $senderInfo));
-
-        
         return redirect()->back()->with("success","Data insert successfully.");
 
     }

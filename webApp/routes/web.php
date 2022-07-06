@@ -56,6 +56,8 @@ Route::get("/test", function(){
 
 	//return BrowserDetect::browserFamily();
 
+	return view('test');
+
 
 
 
