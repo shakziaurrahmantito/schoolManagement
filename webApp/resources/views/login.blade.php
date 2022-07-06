@@ -32,8 +32,8 @@
 
           <form class="py-5" method="post" id="login">
             
-            <marquee scrollamount="8">
-              <div>Welcome to our school management system... If you have any questions contact us 0177134-3570, 01798659666. Develop by <a target="_blank" href="https://shakziaurrahmantito.tk">Md. Ziaur Rahman</a></div>
+            <marquee scrollamount="8" style="font-size: 20px;background: #e4cece;padding: 5px;">
+              <div>Welcome to our school management system... If you have any questions please contact us 0177134-3570, 01798659666.</div>
             </marquee>
 
             <hr>
@@ -51,7 +51,7 @@
             </div>
             <input type="submit" value="Login" class="btn btn-primary">
             <hr>
-            <div class="text-center">&copy; All Right Reversed Shak Ziaur Rahman Tito</a></div>
+            <div class="text-center">Develop by <a target="_blank" href="https://shakziaurrahmantito.tk">Md. Ziaur Rahman</a></div>
 
           </form>
 
