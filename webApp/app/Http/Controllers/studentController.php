@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\student;
 use App\Models\classes;
 use App\Models\school;
+use App\Models\attendance;
 use Illuminate\Support\Facades\Session;
 use PDF;
 
@@ -21,6 +22,14 @@ class studentController extends Controller
         ->where("st_status","1")->count();
 
         return view('studentAdd', compact('getCla', 'getStRoll'));
+    }
+
+    public function studentDelete($id){
+        $stu = student::find($id);
+        @unlink($stu->st_img);
+        attendance::where("st_id", $id)->delete($id);
+        student::where("st_id",$id)->delete();
+        return redirect('studentList');
     }
 
 

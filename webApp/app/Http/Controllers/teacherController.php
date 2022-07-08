@@ -77,6 +77,14 @@ class teacherController extends Controller
         return redirect("/login");
     }
 
+
+    public function teacherDelete($id){
+        $tea = teacher::find($id);
+        @unlink($tea->tea_img);
+        teacher::where("tea_id",$id)->delete();
+        return redirect('teacherlist');
+    }
+
     public function teaDownload($id){
 
         $tea = teacher::find($id);

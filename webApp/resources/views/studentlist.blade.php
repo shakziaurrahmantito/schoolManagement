@@ -55,10 +55,10 @@
                    <!--  <button class="btn btn-primary"><i class="fa fa-edit"></i></button> -->
                    Download
                   </a>
-
-                  <!-- <a onclick="return confirm('Are you sure delete?')" href='{{url("delId/$data->cla_id")}}'>
+                   || 
+                  <a onclick="return confirm('Are you sure delete?')" href='{{url("studentDelete/$data->st_id")}}'>
                     <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                  </a> -->
+                  </a>
 
                 </td>
               </tr>

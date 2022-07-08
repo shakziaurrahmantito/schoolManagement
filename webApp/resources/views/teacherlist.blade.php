@@ -15,15 +15,15 @@
         <table id="example" class="display text-center" style="overflow:auto;width: 100%;">
             <thead>
               <tr>
-                <th width="5%">SL</th>
-                <th width="20%">Name</th>
-                <th width="20%">Email</th>
-                <th width="15%">Phone</th>
-                <th width="5%">Role</th>
-                <th width="5%">Class</th>
-                <th width="5%">Image</th>
-                <th width="5%">Status</th>
-                <th width="20%">Action</th>
+                <th width=>SL</th>
+                <th width=>Name</th>
+                <th width=>Email</th>
+                <th width=>Phone</th>
+                <th width>Role</th>
+                <th width>Class</th>
+                <th width>Image</th>
+                <th width>Status</th>
+                <th width=>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -59,9 +59,11 @@
                     Download
                   </a>
 
-                  <!-- <a onclick="return confirm('Are you sure delete?')" href='{{url("delId/$data->cla_id")}}'>
+                   ||
+
+                  <a onclick="return confirm('Are you sure delete?')" href='{{url("teacherDelete/$data->tea_id")}}'>
                     <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                  </a> -->
+                  </a>
 
                 </td>
               </tr>

@@ -78,6 +78,7 @@ Route::group(['middleware' => ['loginCheck']], function(){
 
 
 	Route::get("/teaDownload/{id?}",[teacherController::class,"teaDownload"]);
+	Route::get("/teacherDelete/{id?}",[teacherController::class,"teacherDelete"]);
 
 
 
@@ -96,6 +97,7 @@ Route::group(['middleware' => ['loginCheck']], function(){
 	Route::post("/studentInsert",[studentController::class,"studentInsert"])->name('studentInsert');
 	Route::get("/studentList",[studentController::class,"studentList"])->name('studentList');
 	Route::get("/sutdentpdf/{id}",[studentController::class,"sutdentpdf"]);
+	Route::get("/studentDelete/{id}",[studentController::class,"studentDelete"]);
 
 
 
