@@ -13,6 +13,7 @@ use App\Models\loginInfo;
 use Illuminate\Support\Facades\Session;
 use App\Mail\teacherAccountMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use PDF;
 use BrowserDetect;
 
@@ -61,7 +62,29 @@ class teacherController extends Controller
 
         $selected_class = classes::find(Session::get("tea_cla"));
 
-        return view('dashboad', compact("currentTotalStudent","todayPresent","todayAbsent","totalClass","totalStudent","disabledStudent","countinueStudent","attendanceStatus","selected_class","totalTeacher"));
+
+
+        $loginCount = loginInfo::select(DB::raw('count(*) as count'))
+                ->whereYear("created_at", date('Y'))
+                ->groupBy(DB::raw('month(created_at)'))
+                ->pluck('count');
+
+
+        $month = loginInfo::select(DB::raw('month(created_at) as month'))
+                ->whereYear("created_at", date('Y'))
+                ->groupBy(DB::raw('month(created_at)'))
+                ->pluck('month');
+
+        $chartData = array(0,0,0,0,0,0,0,0,0,0,0,0);
+
+        foreach($month as $key => $month){
+            $chartData[$month] = $loginCount[$key];
+        }
+
+
+
+
+        return view('dashboad', compact("currentTotalStudent","todayPresent","todayAbsent","totalClass","totalStudent","disabledStudent","countinueStudent","attendanceStatus","selected_class","totalTeacher","chartData"));
     }
 
 

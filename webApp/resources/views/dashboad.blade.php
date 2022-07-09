@@ -25,7 +25,6 @@
 
             @if($getLogin->tea_role == 1 && $getLogin->tea_cla == 0)
 
-
             <div class="col-md-8 my-2">
                   <div class="card">
                         <div class="card-body">
@@ -119,9 +118,17 @@
                               </table>
                         </div>
                   </div>
-            </div>  
+            </div>
 
-
+            <div class="col-md-12 my-2">
+                  <div class="card">
+                        <div class="card-body">
+                              <p>Login information</p>
+                              <hr>
+                              <div id="chart-container"></div>
+                        </div>
+                  </div>
+            </div> 
 
             @else
 
@@ -259,21 +266,60 @@
     </div>
   </section>
 
+      <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+      <script type="text/javascript">
 
+            var datas = <?php echo json_encode($chartData); ?>;
 
-  <script type="text/javascript">
+            Highcharts.chart('chart-container',{
+                  title : {
+                        text: "Teacher Login chart"
+                  },
+                  subtitle:{
+                        text : "By Shak Ziaur Rahman Tito"
+                  },
+                  xAxis:{
+                        categories:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dece']
+                  },
+                  yAxis:{
+                        title : {
+                              text : "Count Login"
+                        }
+                  },
+                  legend : {
+                        layout : 'vertical',
+                        align: 'right',
+                        verticalAlign : "middle"
+                  },
+                  plotOptions : {
+                        series : {
+                              allowPointSelect : true
+                        }                       
+                  },
+                  series: [{
+                        name: "Login",
+                        data: datas
+                  }],
+                  responsive: {
+                        rules: [
+                              {
+                                    condition : {
+                                          maxWidth: 500
+                                    },
+                                    chartOptions:{
+                                          legend: {
+                                                layout : 'horizontal',
+                                                align : 'center',
+                                                verticalAlign: 'bottom'
+                                          }
+                                    }
+                              }
+                        ]
+                  }
 
-
-    
-
-
-
-
-
-    
-  
-
-  </script>
+            })
+                  
+      </script>
 
 
 
