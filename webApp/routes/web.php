@@ -58,14 +58,6 @@ Route::get("/teachersend",function(){
 
 });
 
-Route::get('/clear-cache', function() {
-    $exitCode = Artisan::call('route:clear');
-    $exitCode = Artisan::call('cache:clear');
-    $exitCode = Artisan::call('view:clear');
-    // return what you want
-});
-
-
 
 Route::get("/pdfview", function(){
 
