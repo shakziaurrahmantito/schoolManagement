@@ -54,6 +54,12 @@ Route::get("/pdfview", function(){
 
 });
 
+Route::get("/clear", function(){
+	Artisan::call("route:clear");
+	Artisan::call("cache:clear");
+	return "Cache clear";
+})
+
 
 
 Route::get("/test", function(){
