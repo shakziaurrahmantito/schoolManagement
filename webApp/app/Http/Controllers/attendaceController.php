@@ -17,7 +17,7 @@ class attendaceController extends Controller
 
         $getSt = student::join("classes","students.st_class","=", "classes.cla_id")
         ->select("students.*","classes.cla_name")
-        ->orderby("students.st_id","DESC")
+        ->orderby("students.st_id","ASC")
         ->where("students.st_class", Session::get("tea_cla"))
         ->get();
 
