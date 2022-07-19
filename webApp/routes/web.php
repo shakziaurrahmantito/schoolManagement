@@ -10,6 +10,9 @@ use App\Http\Controllers\schoolController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\test;
 use App\Models\teacher;
+use App\Models\User;
+use App\Notifications\sendMail;
+use Illuminate\Support\Facades\Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +34,15 @@ Route::group(['middleware' => ['checkUser']], function(){
 });
 
 Route::get("/testJoin",[test::class,"testJoin"]);
+
+
+//Test for notification
+
+Route::get("/notification",function(){
+	$User = User::find(1);
+	$User->notify(new sendMail());
+	return "Mail sent";
+});
 
 
 
