@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-         $schedule->command('user:notify')->everyMinute()->sendOutputTo("Mail sent");
+         //$schedule->command('user:notify')->everyMinute()->sendOutputTo("Mail sent");
          $schedule->command('queue:work --daemon')->everyMinute()->withoutOverlapping();
     }
 
