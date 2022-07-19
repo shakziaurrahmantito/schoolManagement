@@ -40,8 +40,8 @@ Route::get("/testJoin",[test::class,"testJoin"]);
 
 Route::get("/notification",function(){
 	$User = User::find(1);
-	//$User->notify(new sendMail());
-	return "Welcome";
+	$User->notify(new sendMail());
+	return "Mail sent";
 });
 
 
