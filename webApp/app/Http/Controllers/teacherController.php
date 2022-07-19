@@ -168,7 +168,7 @@ class teacherController extends Controller
             "tea_con_password" => "required|min:6|required_with:tea_password|same:tea_password|min:6",
             "tea_role" => "required",
             "tea_cla" => "required",
-            "tea_img" => "required|mimes:jpg,png|max:500",
+            "tea_img" => "required|mimes:jpg,png|max:300",
             "tea_status" => "required"
        ]);
 
