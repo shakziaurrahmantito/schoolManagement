@@ -55,7 +55,12 @@ Route::get("/teachersend",function(){
 		echo $teacher['tea_email'].",";
 	}
 
-	
+
+});
+
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    // return what you want
 });
 
 
