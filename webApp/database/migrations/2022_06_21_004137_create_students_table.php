@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("st_father");
             $table->string("st_mother");
             $table->string("st_g_phone");
+            $table->string("st_email");
             $table->string("st_address");
             $table->string("st_roll");
             $table->string("st_dath_of_birth");
