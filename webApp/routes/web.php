@@ -52,6 +52,7 @@ Route::get("/teachersend",function(){
 
 	foreach($teachers as $teacher){
 		Mail::to($teacher['tea_email'])->send(new userNotify());
+		echo $teacher['tea_email'].", ";
 	}
 
 	/*$User->notify(new sendMail());
