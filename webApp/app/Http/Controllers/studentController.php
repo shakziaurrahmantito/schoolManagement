@@ -10,6 +10,7 @@ use App\Models\attendance;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use PDF;
+use App\Mail\studentAdd;
 
 class studentController extends Controller
 {
@@ -99,6 +100,10 @@ class studentController extends Controller
            $st->save();
             move_uploaded_file($file, $path);
             move_uploaded_file($file_ger, $path_ger);
+
+
+
+
             return "1";
 
         }else{
