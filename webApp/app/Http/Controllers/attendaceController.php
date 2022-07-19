@@ -8,6 +8,8 @@ use App\Models\student;
 use App\Models\classes;
 use App\Models\school;
 use Illuminate\Support\Facades\Session;
+use App\Mail\attendanceNotify;
+use Mail;
 
 class attendaceController extends Controller
 {
@@ -15,7 +17,7 @@ class attendaceController extends Controller
 
         $getSt = student::join("classes","students.st_class","=", "classes.cla_id")
         ->select("students.*","classes.cla_name")
-        ->orderby("students.st_id","ASC")
+        ->orderby("students.st_id","DESC")
         ->where("students.st_class", Session::get("tea_cla"))
         ->get();
 
@@ -33,16 +35,32 @@ class attendaceController extends Controller
             return "0";
         }else{
             $i = 0;
-            foreach($req->atten as $roll => $value){
-                $att = new attendance();
-                $att->st_roll = $roll;
-                $att->class_id = Session::get('tea_cla');
-                $att->attendance = $value;
-                $att->st_id = $req->st_id[$i++];
-                $att->attendance_date = date("d-M-Y");
-                $att->attendance_month = date("M-Y");
-                $att->save();
-            }
+
+    foreach($req->atten as $roll => $value){
+
+        if ($value == "P") {
+           $data = [
+                "name" => $req->st_name[$i],
+                "attendance" => "present"
+            ];
+            Mail::to($req->str_email[$i])->send(new attendanceNotify($data));
+        }else{
+            $data = [
+                "name" => $req->st_name[$i],
+                "attendance" => "absent"
+            ];
+            Mail::to($req->str_email[$i])->send(new attendanceNotify($data));
+        }
+
+        $att = new attendance();
+        $att->st_roll = $roll;
+        $att->class_id = Session::get('tea_cla');
+        $att->attendance = $value;
+        $att->st_id = $req->st_id[$i++];
+        $att->attendance_date = date("d-M-Y");
+        $att->attendance_month = date("M-Y");
+        $att->save();
+    }
         }
 
         return "1";

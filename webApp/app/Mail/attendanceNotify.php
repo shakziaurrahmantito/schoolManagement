@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class studentAdd extends Mailable implements ShouldQueue
+class attendanceNotify extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -16,11 +16,11 @@ class studentAdd extends Mailable implements ShouldQueue
      *
      * @return void
      */
-    public $info;
+    public $data;
 
-    public function __construct($info)
+    public function __construct($data)
     {
-        $this->info = $info;
+        $this->data = $data;
     }
 
     /**
@@ -30,6 +30,6 @@ class studentAdd extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject("Admission notice")->from("no-replay@shakziaurrahmantito.tk","School Management System")->view('Mail.studentAdd');
+        return $this->view('Mail.attendancenotify');
     }
 }

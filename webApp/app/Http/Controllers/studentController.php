@@ -93,8 +93,6 @@ class studentController extends Controller
            $st->st_ger_nid = $req->st_ger_nid;
            $st->st_ger_img = $path_ger;
 
-
-
            $st->st_class = Session::get('tea_cla');
            $st->st_img = $path;
            $st->st_status = $req->st_status;
@@ -103,29 +101,19 @@ class studentController extends Controller
             move_uploaded_file($file_ger, $path_ger);
 
             $info = [
-                "st_name" => $st->st_name,
-                "st_father" => $st->st_father,
-                "st_mother" => $st->st_mother,
-                "st_roll" => $st->st_roll,
+                "st_name" => $req->st_name,
+                "st_father" => $req->st_father,
+                "st_mother" => $req->st_mother,
+                "st_roll" => $req->st_roll,
                 "str_class" => Session::get('tea_cla')
             ];
-
-            Mail::to($st->st_email)->send(new studentAdd($info));
+            Mail::to($req->st_email)->send(new studentAdd($info));
             return "1";
         }else{
-
             return response()->json([
                 "roll_exists"=>1
             ]);
-
         }
-
-
-
-
-        
-
-
 
     }
 

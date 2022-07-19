@@ -12,12 +12,9 @@
   		<div class="col-12">
 	  		<div class="card">
 			  <div class="card-body">
-			  	<h5>Dear {{$info['st_name']}}</h5>
+			  	<h5>Dear {{$data['name']}}</h5>
 			  	<p>
-
-			  		Hey! {{$info['st_name']}}. Their Father's name is {{$info['st_father']}} and his mother's name is {{$info['st_mother']}}. <br>Admission class {{$info['str_class']}} class roll {{$info['st_roll']}}.Your admission is complete.
-			  		<br>
-			  		Thank you! {{$info['st_name']}} best of luck.
+			  		You are today {{$data['attendance']}}
 			  	</p>
 
 			  </div>

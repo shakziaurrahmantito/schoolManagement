@@ -168,7 +168,7 @@ class teacherController extends Controller
             "tea_con_password" => "required|min:6|required_with:tea_password|same:tea_password|min:6",
             "tea_role" => "required",
             "tea_cla" => "required",
-            "tea_img" => "required|mimes:jpg,png",
+            "tea_img" => "required|mimes:jpg,png|max:500",
             "tea_status" => "required"
        ]);
 
@@ -202,7 +202,7 @@ class teacherController extends Controller
 
 
        $senderInfo = [
-            "from" => "contact@shakziaurrahmantito.tk",
+            "from" => "no-replay@shakziaurrahmantito.tk",
             "alias" => "School Management System",
             "subject" => "Login Information"
        ];

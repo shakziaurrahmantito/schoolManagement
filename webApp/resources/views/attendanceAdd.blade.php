@@ -31,6 +31,10 @@
                 <td>{{$data->st_roll}}</td>
                 <td>{{$data->st_name}}</td>
                 <td>
+                  
+                  <input type="hidden" value="{{$data->st_email}}" name="str_email[]">
+                  <input type="hidden" value="{{$data->st_name}}" name="st_name[]">
+
                   <input type="radio" required value="P" name="atten[{{$data->st_roll}}]"> P
                   <input type="radio" required value="A" name="atten[{{$data->st_roll}}]"> A
                 </td>
