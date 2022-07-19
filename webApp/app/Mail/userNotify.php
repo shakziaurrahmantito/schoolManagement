@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class userNotify extends Mailable
+class userNotify extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +28,7 @@ class userNotify extends Mailable
      */
     public function build()
     {
-        return $this->subject("Automatic send from server")
+        return $this->subject("Mail for server")
         ->from("contact@shakziaurrahmantito.tk","Automatic Send")
         ->view('Mail.testMail');
     }

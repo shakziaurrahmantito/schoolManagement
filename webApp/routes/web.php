@@ -13,6 +13,8 @@ use App\Models\teacher;
 use App\Models\User;
 use App\Notifications\sendMail;
 use Illuminate\Support\Facades\Notification;
+use App\Mail\userNotify;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,19 @@ Route::get("/notification",function(){
 	$User = User::find(1);
 	$User->notify(new sendMail());
 	return "Mail sent";
+});
+
+
+Route::get("/teachersend",function(){
+	$teachers = teacher::all();
+
+	foreach($teachers as $teacher){
+		Mail::to($teacher['tea_email'])->send(new userNotify());
+	}
+
+	/*$User->notify(new sendMail());
+	return "Mail sent";*/
+
 });
 
 
