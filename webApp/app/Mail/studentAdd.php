@@ -16,9 +16,11 @@ class studentAdd extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $info;
+
+    public function __construct($info)
     {
-        //
+        $this->info = $info;
     }
 
     /**
@@ -28,6 +30,6 @@ class studentAdd extends Mailable
      */
     public function build()
     {
-        return $this->subject()->from->view('studentAdd');
+        return $this->subject("Admission notice")->from("no-replay@shakziaurrahmantito.tk","School Management System")->view('studentAdd');
     }
 }

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use PDF;
 use App\Mail\studentAdd;
+use Mail;
 
 class studentController extends Controller
 {
@@ -101,11 +102,16 @@ class studentController extends Controller
             move_uploaded_file($file, $path);
             move_uploaded_file($file_ger, $path_ger);
 
+            $info = [
+                "st_name" => $st->st_name,
+                "st_father" => $st->st_father,
+                "st_mother" => $st->st_mother,
+                "st_roll" => $st->st_roll,
+                "str_class" => Session::get('tea_cla')
+            ];
 
-
-
+            Mail::to($st->st_email)->send(new studentAdd($info));
             return "1";
-
         }else{
 
             return response()->json([

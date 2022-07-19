@@ -12,33 +12,14 @@
   		<div class="col-12">
 	  		<div class="card">
 			  <div class="card-body">
-			  	<h5>Dear {{$data['name']}}</h5>
+			  	<h5>Dear {{$info['st_name']}}</h5>
 			  	<p>
-			  		Thank you! {{$data['name']}}. You have opened an account from our school management system. <br> Below is your login information.
-			  	</p>
-			  	<ul>
-			  		<li>Site Link: <a href="{{$data['sitelink']}}">{{$data['sitelink']}}</a></li>
-			  		<li>Email: {{$data['email']}}</li>
-			  		<li>Password: {{$data['password']}}</li>
-			  	</ul>
 
-			  	<p align="center">
-			  		<a href="{{$data['sitelink']}}" target="_blank" style="
-    		display: inline-block;
-		    font-weight: 400;
-		    text-align: center;
-		    white-space: nowrap;
-		    vertical-align: middle;
-		    user-select: none;
-		    border: 1px solid transparent;
-		    padding: 0.375rem 0.75rem;
-		    font-size: 1rem;
-		    line-height: 1.5;
-		    border-radius: 0.25rem;
-		    text-decoration: none;
-    		transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-			color: #fff;background-color: #007bff;border-color: #007bff;">Go to login</a>
+			  		Hey! {{$info['st_name']}}. Their Father's name is {{$info['st_father']}} and his mother's name is {{$info['st_mother']}}. Admission class {{$info['str_class']}} class roll {{$info['st_roll']}}. Your admission is complete.
+
+			  		Thank you! {{$info['st_name']}} best of luck.
 			  	</p>
+
 			  </div>
 			  <div class="card-footer">
 			  	<address>
