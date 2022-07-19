@@ -46,19 +46,6 @@ Route::get("/notification",function(){
 	return "Mail sent";
 });
 
-
-Route::get("/teachersend",function(){
-	$teachers = teacher::all();
-
-	foreach($teachers as $teacher){
-		Mail::to($teacher['tea_email'])->send(new userNotify());
-		echo $teacher['tea_email'].",";
-	}
-
-
-});
-
-
 Route::get("/pdfview", function(){
 
 	$tea = teacher::find(10);
