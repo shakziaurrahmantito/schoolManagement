@@ -72,7 +72,7 @@
             </div>
             <div class="form-row">
               <div class="col-md-6 my-2">
-                <input type="file" class="form-control-file" name="st_img">
+                <input type="file" class="form-control-file" name="st_img" id="st_img">
                <small id="st_img_error" class="form-text text-muted"></small>
               </div>
             </div>
@@ -106,6 +106,28 @@
 
     $("#myForm").submit(function(){
       var form = $("#myForm").get(0);
+
+
+      var len = document.getElementById("st_ger_img").files;
+      
+      if (len.length > 0) {
+        var file = document.getElementById("st_ger_img").files[0];
+        if (file.size > 286720) {
+          alert("Gerdian image size only upload 280 kb");
+          return false;
+        }
+      }
+
+
+      var len_st = document.getElementById("st_img").files;
+      
+      if (len_st.length > 0) {
+        var file = document.getElementById("st_img").files[0];
+        if (file.size > 286720) {
+          alert("Student image size only upload 280 kb");
+          return false;
+        }
+      }
 
       $.ajax({
         url : "{{route('studentInsert')}}",
@@ -157,13 +179,46 @@
 
 
     $("#st_ger_img").change(function(){
-
       var file = document.getElementById("st_ger_img").files[0];
-      var reader = new FileReader();
+      if (file.size > 286720) {
+        alert("Gerdian image size only upload 280 kb");
+        return false;
+      }else{
+        return false;
+      }
+      /*var reader = new FileReader();
       reader.onload = function(e){
-        alert(this.width);
+
+        var img = new Image();
+        img.src = e.target.result;
+        img.onload = function(){
+            alert(this.height+" "+this.width);
+        }
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(file);*/
+
+    });
+
+
+
+    $("#st_img").change(function(){
+      var file = document.getElementById("st_img").files[0];
+      if (file.size > 286720) {
+        alert("Student image size only upload 280 kb");
+        return false;
+      }else{
+        return false;
+      }
+      /*var reader = new FileReader();
+      reader.onload = function(e){
+
+        var img = new Image();
+        img.src = e.target.result;
+        img.onload = function(){
+            alert(this.height+" "+this.width);
+        }
+      };
+      reader.readAsDataURL(file);*/
 
     });
 

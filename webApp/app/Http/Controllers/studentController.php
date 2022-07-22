@@ -50,8 +50,8 @@ class studentController extends Controller
                 "st_roll" => "required",
                 "st_dath_of_birth" => "required",
                 "birth_reg" => "required",
-                "st_ger_img" => "required|mimes:png,jpeg,jpg|max:250",
-                "st_img" => "required|mimes:png,jpeg,jpg|max:250",
+                "st_ger_img" => "required|mimes:png,jpeg,jpg|max:280",
+                "st_img" => "required|mimes:png,jpeg,jpg|max:280",
                 "st_status" => "required",
                 "st_ger_nid" => "required"
            ]);
