@@ -8,6 +8,7 @@ use App\Http\Controllers\studentController;
 use App\Http\Controllers\attendaceController;
 use App\Http\Controllers\schoolController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\passresetController;
 use App\Http\Controllers\test;
 use App\Models\teacher;
 use App\Models\User;
@@ -32,6 +33,10 @@ use Illuminate\Support\Facades\Mail;
 Route::group(['middleware' => ['checkUser']], function(){
 
 	Route::get("/login",[teacherController::class,"login"]);
+	Route::get("/reset",[passresetController::class,"reset"]);
+	Route::post("/resetPassword",[passresetController::class,"resetPassword"]);
+	Route::get("/passreset",[passresetController::class,"passreset"]);
+	Route::post("/resetpasswordInsert/",[passresetController::class,"resetpasswordInsert"])->name("resetpasswordInsert");
 	Route::post("/teacherLogin",[teacherController::class,"teacherLogin"])->name("teacherLogin");
 });
 
@@ -136,10 +141,6 @@ Route::group(['middleware' => ['loginCheck']], function(){
 
 
 	Route::get("/loglist",[loginController::class,"loglist"]);
-
-
-
-
 
 
 

@@ -31,28 +31,18 @@
         <div class="card-body">
 
           <form class="py-5" method="post" id="login">
-            
-            <marquee scrollamount="8" style="font-size: 20px;background: #e4cece;padding: 5px;">
-              <div>Welcome to our school management system... If you have any questions please contact us 0177134-3570, 01798659666.</div>
-            </marquee>
-
+           
             <hr>
             @csrf
             <h6 class="text-center text-danger" id="msg"></h6>
             <div class="form-group">
-              <label>Email</label>
-              <input type="text" name="tea_email" id="email" class="form-control" placeholder="Email address">
-              <small id="erremail" class="form-text" style="color:red;"></small>
-            </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input type="password" name="tea_password" id="password" class="form-control" placeholder="Password">
+              <label>New Password</label>
+              <input type="hidden" name="email" value="{{$email}}">
+              <input type="password" name="password" id="password" class="form-control" placeholder="New Password">
               <small id="errpassword" class="form-text" style="color:red;"></small>
-              <a href="reset">Forgot password</a>
             </div>
-            <input type="submit" value="Login" class="btn btn-primary">
-            <hr>
-            <div class="text-center">Develop by <a target="_blank" href="https://shakziaurrahmantito.tk">Md. Ziaur Rahman</a></div>
+
+            <input type="submit" value="Change" class="btn btn-primary">
 
           </form>
 
@@ -67,12 +57,7 @@
 
   $("#login").submit(function(){
 
-      if ($('#email').val() == "") {
-        $("#erremail").text("Field must not be empty.");
-        return false;
-      }else{
-        $("#erremail").text("");
-      }
+
 
       if ($('#password').val() == "") {
         $("#errpassword").text("Field must not be empty.");
@@ -81,22 +66,26 @@
         $("#errpassword").text("");
       }
 
-      if ($('#email').val() !== "" && $('#password').val() !== "") {
+      if ($('#password').val() !== "") {
 
           var form = $("#login").get(0);
 
           $.ajax({
-          url : "{{Route('teacherLogin')}}",
+          url : "{{Route('resetpasswordInsert')}}",
           method : "post",
           data : new FormData(form),
           processData : false,
           contentType : false,
           success : function(data){
-             if ($.trim(data) == 0) {
-                $("#msg").text("Email or pasword no match!");
-              }else{
-                window.location.assign("{{url('/')}}");
-              }
+
+          	if(data.message == 1){
+          		$("#msg").addClass("text-success").text("Password change successfully!").removeClass("text-danger");
+          		$('#login')[0].reset();
+          	}else{
+          		$("#msg").addClass("text-danger").text("Password not changed").removeClass("text-success");
+          		$('#login')[0].reset();
+          	}
+
           }
 
         });

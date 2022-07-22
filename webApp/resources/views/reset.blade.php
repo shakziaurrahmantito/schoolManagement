@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Panel</title>
+    <title>Reset Panel</title>
     <link rel="shortcut icon" href="{{asset('img/icon.png')}}">
     <link rel="stylesheet" href="{{asset('css/uikit.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
@@ -30,30 +30,15 @@
       <div class="card">
         <div class="card-body">
 
-          <form class="py-5" method="post" id="login">
-            
-            <marquee scrollamount="8" style="font-size: 20px;background: #e4cece;padding: 5px;">
-              <div>Welcome to our school management system... If you have any questions please contact us 0177134-3570, 01798659666.</div>
-            </marquee>
-
-            <hr>
+          <form class="py-5" method="post" id="reset">
             @csrf
-            <h6 class="text-center text-danger" id="msg"></h6>
+            <h6 class="text-center" id="msg"></h6>
             <div class="form-group">
               <label>Email</label>
-              <input type="text" name="tea_email" id="email" class="form-control" placeholder="Email address">
+              <input type="text" name="email" id="email" class="form-control" placeholder="Email address">
               <small id="erremail" class="form-text" style="color:red;"></small>
             </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input type="password" name="tea_password" id="password" class="form-control" placeholder="Password">
-              <small id="errpassword" class="form-text" style="color:red;"></small>
-              <a href="reset">Forgot password</a>
-            </div>
-            <input type="submit" value="Login" class="btn btn-primary">
-            <hr>
-            <div class="text-center">Develop by <a target="_blank" href="https://shakziaurrahmantito.tk">Md. Ziaur Rahman</a></div>
-
+            <input type="submit" value="Reset" class="btn btn-primary">
           </form>
 
         </div>
@@ -65,7 +50,7 @@
     <script type="text/javascript">
       
 
-  $("#login").submit(function(){
+  $("#reset").submit(function(){
 
       if ($('#email').val() == "") {
         $("#erremail").text("Field must not be empty.");
@@ -74,29 +59,35 @@
         $("#erremail").text("");
       }
 
-      if ($('#password').val() == "") {
-        $("#errpassword").text("Field must not be empty.");
-        return false;
-      }else{
-        $("#errpassword").text("");
-      }
 
-      if ($('#email').val() !== "" && $('#password').val() !== "") {
 
-          var form = $("#login").get(0);
+      if ($('#email').val() !== "") {
+
+          var form = $("#reset").get(0);
 
           $.ajax({
-          url : "{{Route('teacherLogin')}}",
+          url : "{{url('/resetPassword')}}",
           method : "post",
           data : new FormData(form),
           processData : false,
           contentType : false,
+          
           success : function(data){
-             if ($.trim(data) == 0) {
+
+          	if(data.message == 0){
+          		$("#msg").addClass("text-danger").text("Email address not found!").removeClass("text-success");
+          	}else{
+          		$("#msg").text("We are sent reset link "+data.message).addClass("text-success").removeClass("text-danger");
+          		$("#reset")[0].reset();
+          	}
+
+          	//alert(data);
+
+             /*if ($.trim(data) == 0) {
                 $("#msg").text("Email or pasword no match!");
               }else{
                 window.location.assign("{{url('/')}}");
-              }
+              }*/
           }
 
         });
