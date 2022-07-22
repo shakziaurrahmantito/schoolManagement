@@ -50,7 +50,7 @@
                 <small id="st_ger_nid_error" class="form-text text-muted"></small>
               </div>
               <div class="col-md-6 my-2">
-                <input type="file" class="form-control" name="st_ger_img" placeholder="Date of birth">
+                <input type="file" class="form-control" id="st_ger_img" name="st_ger_img" placeholder="Date of birth">
                 <small id="st_ger_img_error" class="form-text text-muted"></small>
               </div>
             </div>
@@ -152,6 +152,18 @@
 
       return false;
 
+
+    });
+
+
+    $("#st_ger_img").change(function(){
+
+      var file = document.getElementById("st_ger_img").files[0];
+      var reader = new FileReader();
+      reader.onload = function(e){
+        alert(this.width);
+      };
+      reader.readAsDataURL(file);
 
     });
 
