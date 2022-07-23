@@ -27,6 +27,8 @@ class test extends Controller
             if ($req->header("key") == "test") {
                 $user = teacher::get();
                 return response()->json(["teacher"=>$user],200);
+            }else{
+                return response()->json(["teacher"=> "Not found"],200);
             }
 
         }else{
