@@ -21,11 +21,13 @@ class test extends Controller
     }
 
 
-    public function teacherlist($id = null){
+    public function teacherlist(Request $req, $id = null){
         if ($id == null) {
-            
-            $user = teacher::get();
-            return response()->json(["teacher"=>$user],200);
+
+            if ($req->header("key") == "test") {
+                $user = teacher::get();
+                return response()->json(["teacher"=>$user],200);
+            }
 
         }else{
 
