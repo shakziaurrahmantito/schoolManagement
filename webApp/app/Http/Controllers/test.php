@@ -19,4 +19,21 @@ class test extends Controller
         return view("jointest", $data);
 
     }
+
+
+    public function teacherlist($id = null){
+        if ($id == null) {
+            
+            $user = teacher::get();
+            return response()->json(["teacher"=>$user],200);
+
+        }else{
+
+            $user = teacher::findOrFail($id);
+            return response()->json(["teacher"=>$user],200);
+
+        }
+    }
+
+
 }
