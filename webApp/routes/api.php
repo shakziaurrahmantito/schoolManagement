@@ -15,7 +15,7 @@ use App\Http\Controllers\test;
 |
 */
 
-Rotue::get("/teacherlist",[test::class,"teacherlist"]);
+Route::get("/teacherlist",[test::class,"teacherlist"]);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
