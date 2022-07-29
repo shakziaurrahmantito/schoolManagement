@@ -22,7 +22,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            teacherSeeder::class
+            teachers_seeder::class,
+            classes_seeder::class,
+            schools_Seeder::class,
+            roles_seeder::class
         ]);
     }
 }
