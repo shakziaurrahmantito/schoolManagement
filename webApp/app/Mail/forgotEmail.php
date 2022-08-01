@@ -29,6 +29,6 @@ class forgotEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject("Password Reset")->from("no-replay@shakziaurrahmantito.tk","School Management System")->view('Mail.forgot');
+        return $this->subject("Password Reset")/*->from("no-replay@shakziaurrahmantito.tk","School Management System")*/->view('Mail.forgot');
     }
 }
