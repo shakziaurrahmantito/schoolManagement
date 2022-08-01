@@ -33,6 +33,8 @@ class teacherAccountMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject($this->senderInfo['subject'])->from($this->senderInfo['from'], $this->senderInfo['alias'])->view('Mail.teacherAccount');
+       /* return $this->subject($this->senderInfo['subject'])->from($this->senderInfo['from'], $this->senderInfo['alias'])->view('Mail.teacherAccount');*/
+
+        return $this->subject($this->senderInfo['subject'])->view('Mail.teacherAccount');
     }
 }

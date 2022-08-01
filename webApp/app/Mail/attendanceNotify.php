@@ -30,6 +30,6 @@ class attendanceNotify extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject("Attendance Notice")->from("no-replay@shakziaurrahmantito.tk","School Management System")->view('Mail.attendancenotify');
+        return $this->subject("Attendance Notice")->view('Mail.attendancenotify');
     }
 }

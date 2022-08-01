@@ -30,6 +30,7 @@ class studentAdd extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject("Admission notice")->from("no-replay@shakziaurrahmantito.tk","School Management System")->view('Mail.studentAdd');
+        //return $this->subject("Admission notice")->from("no-replay@shakziaurrahmantito.tk","School Management System")->view('Mail.studentAdd');
+        return $this->subject("Admission notice")->view('Mail.studentAdd');
     }
 }

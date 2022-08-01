@@ -28,8 +28,10 @@ class userNotify extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject("Mail for server")
+        /*return $this->subject("Mail for server")
         ->from("no-replay@shakziaurrahmantito.tk","No-replay")
+        ->view('Mail.testMail');*/
+        return $this->subject("Mail for server")
         ->view('Mail.testMail');
     }
 }
