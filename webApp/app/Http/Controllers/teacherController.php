@@ -75,7 +75,7 @@ class teacherController extends Controller
                 ->groupBy(DB::raw('month(created_at)'))
                 ->pluck('month');
 
-        $chartData = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $chartData = array(0,0,0,0,0,0,0,0,0,0,0,0,0);
 
         foreach($month as $key => $month){
             $chartData[$month] = $loginCount[$key];
