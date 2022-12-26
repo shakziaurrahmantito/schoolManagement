@@ -37,6 +37,11 @@ Route::get('/testmyMethod', function(){
 
 
 
+Route::get("/googleRedirect",[loginController::class,"googleRedirect"]);
+Route::get("/googleCallback",[loginController::class,"googleCallback"]);
+
+
+
 Route::group(['middleware' => ['checkUser']], function(){
 
 	Route::get("/login",[teacherController::class,"login"]);

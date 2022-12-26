@@ -56,6 +56,12 @@
 
           </form>
 
+          <div class="text-center">
+            <a href="{{url('/googleRedirect')}}">GOOGle</a>
+            <a href="">Facebook</a>
+            <a href="">Github</a>
+          </div>
+
         </div>
       </div>
 
