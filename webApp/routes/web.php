@@ -30,6 +30,13 @@ use Illuminate\Support\Facades\Mail;
 
 
 
+Route::get('/testmy', [test::class,"testmy"]);
+Route::get('/testmyMethod', function(){
+	return myPayment::fun1();
+});
+
+
+
 Route::group(['middleware' => ['checkUser']], function(){
 
 	Route::get("/login",[teacherController::class,"login"]);

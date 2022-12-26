@@ -6,9 +6,29 @@ use Illuminate\Http\Request;
 use App\Models\teacher;
 use App\Models\role;
 use App\Models\classes;
+//use Facades\App\payment\mypayment;
+//use myPayment;
 
 class test extends Controller
 {
+    public function testmy(){
+
+        //return mypayment::fun1();
+
+       // $obj = app()->make("pay");
+        //return $obj->fun1();
+      //  return $obj->fun2();
+
+
+        /*app()->bind("myClass", mypayment::class);
+        $obj = app()->make("myClass");
+        return $obj->fun1();*/
+
+      // return myPayment::fun1();
+
+    }
+
+
     public function testJoin(){
         /*$data['joinData'] = teacher::leftjoin("classes","classes.cla_id","teachers.tea_cla")
         ->select("teachers.*","classes.cla_name")
